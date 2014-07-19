@@ -13,8 +13,8 @@ import javax.swing.JPanel;
 public class TrafficSignal extends JPanel {
 
 	//data model
-	private final int defaultWidth = 100;
-	private final int defaultHeight = 300;
+	private final int defaultWidth = 50;
+	private final int defaultHeight = 150;
 	private final int circleMargin = 10; //10 pixels margin around circle
 	private final Dimension prefSize = new Dimension(defaultWidth,defaultHeight);
 	// Flags to remember which color should be filled
