@@ -17,7 +17,7 @@ public class MainFrame extends JFrame{
 		//set JFrame properties
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Main Frame");
-		this.getContentPane().setLayout(new GridLayout(0,1));
+		this.getContentPane().setLayout(new GridLayout(0,2)); // rows = 0 columns = 2
 		
 		//create and add ColorCirclePanel to content pane
 		//this.getContentPane().add(new ColorCirclePanel(Color.GREEN));

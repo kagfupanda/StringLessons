@@ -13,7 +13,7 @@ public class TraficSignalController extends Thread {
 		// initialize internal data variables
 		// System.out.println("ctor 1 called");
 		theSignal = trSignal; //store the parameter value in theSignal
-		sleepInterval = 2000; //sleep interval defauslt to 2000 miliseconds
+		sleepInterval = 2000; //sleep interval default to 2000 miliseconds
 	}
 	
 	//second ctor that takes a TrafficSignal and the sleep time in milliseconds
@@ -24,6 +24,14 @@ public class TraficSignalController extends Thread {
 		sleepInterval = sleepTime; // store the input param sleepTime in instance data
 	}
 
+	private void delay(int sleepInterval) {
+		try {
+			Thread.sleep(sleepInterval);
+		} catch (Exception e) {
+			System.out.println("sleep got interrupted");
+		}
+	}
+	
 	@Override
 	public void run() {
 		// implement the logic to operate the signal
@@ -44,30 +52,18 @@ public class TraficSignalController extends Thread {
 			//turn the signal red light on
 			theSignal.setRedOn();
 			//sleep for 2 seconds = 2000 miliseconds
-			try{
-				Thread.sleep(sleepInterval);
-			} catch (Exception e) {
-				System.out.println("sleep got interrupted");
-			}
-			
+			delay(sleepInterval);
 			
 			// turn the signal's green light on
 			theSignal.setGreenOn();
 			//try to sleep for 2 seconds = 2000 mili seconds
-			try {
-				Thread.sleep(sleepInterval);
-			} catch (Exception e) {
-				System.out.println("sleep got interrupted again.");
-			}
-			
+			delay(sleepInterval);
+		
 			//Turn the signals yellow light on
 			theSignal.setYellowOn();
 			//try to sleep for 2 seconds = 2000 mili seconds
-			try {
-				Thread.sleep(sleepInterval);
-			} catch (Exception e) {
-				System.out.println("Sleep got interrupted again and again");
-			}
+			delay(sleepInterval);
+			
 		} // end of while loop
 	}
 }
