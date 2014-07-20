@@ -11,7 +11,7 @@ public class TraficSignalController extends Thread {
 	// The ctor needs to be told the TrafficSignal to control
 	public TraficSignalController(TrafficSignal trSignal) {
 		// initialize internal data variables
-		System.out.println("ctor 1 called");
+		// System.out.println("ctor 1 called");
 		theSignal = trSignal; //store the parameter value in theSignal
 		sleepInterval = 2000; //sleep interval defauslt to 2000 miliseconds
 	}
@@ -19,7 +19,7 @@ public class TraficSignalController extends Thread {
 	//second ctor that takes a TrafficSignal and the sleep time in milliseconds
 	public TraficSignalController(TrafficSignal triSignal, int sleepTime) {
 		//initialize internal data variables
-		System.out.println("ctor 2 called");
+		// System.out.println("ctor 2 called");
 		theSignal = triSignal; //store the input parameter in theSignal var
 		sleepInterval = sleepTime; // store the input param sleepTime in instance data
 	}
