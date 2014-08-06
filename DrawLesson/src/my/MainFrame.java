@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 
 import my.controller.ConcentricCirclesController;
 import my.controller.TraficSignalController;
+import my.gui.CirclePainter;
 import my.gui.ColorCirclePanel;
 import my.gui.ColorRectanglePanel;
 import my.gui.ConcentricCircles;
@@ -29,10 +30,14 @@ public class MainFrame extends JFrame{
 		//TrafficSignal tSignal1 = new TrafficSignal();
 		//this.getContentPane().add(new ConcentricCircles());
 		//this.getContentPane().add(new ConcentricCirclesForLoop());
-		ConcentricCirclesForLoop cc = new ConcentricCirclesForLoop();
-		this.getContentPane().add(cc);
-		ConcentricCirclesController cccon = new ConcentricCirclesController(cc, 2000);
-		cccon.start();
+		CirclePainter cp = new CirclePainter();
+		this.getContentPane().add(cp);
+		new Thread(cp).start();
+		
+		//ConcentricCirclesForLoop cc = new ConcentricCirclesForLoop();
+		//this.getContentPane().add(cc);
+		//ConcentricCirclesController cccon = new ConcentricCirclesController(cc, 2000);
+		//cccon.start();
 		//this.getContentPane().add(tSignal1);
 		//tSignal1.setGreenOn();//turn green light on
 		//create a TrafficSignalController to control tSignla1 TrafficSignal instance
