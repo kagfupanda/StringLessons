@@ -197,6 +197,34 @@ public class StringLength {
 		return retCount;
 	}
 
+	/**
+	 * @param String inpStr
+	 * @param int len 
+	 * @return number of words in string
+	 */
+	private static int numberOfWords(String inpStr, int len) {
+		// convert string to char[]
+		char[] inpCa = inpStr.toCharArray();
+		// use a flag (boolean) to track whether to count or not
+		boolean flagCountNow = true; // initialize to true because the first letter could be the beginning of the word
+		int numCount = 0; // keeps track of number of words
+		for(int pos = 0; pos < len; ++pos) { // iterate through each position len times
+			// check if pos is in white space
+			int asciiValue = (int)inpCa[pos];
+			// check if ascii value is white space
+			if(asciiValue <= 32) {
+				flagCountNow = true; // means that current position is a word boundary
+			} else { // current letter is a letter
+				if(flagCountNow == true) { // means current current letter is past a boundary
+					++numCount; // increment counter
+					flagCountNow = false; // reset flag because inside a word
+				}
+			}
+		} // end for
+		// return the counter
+		return numCount;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//open string.txt file from home directory
@@ -210,31 +238,38 @@ public class StringLength {
 			while (inputTestString != null) {
 				int len = computeStringLength(inputTestString);
 				System.out.printf("Length of %s is: %d %n", inputTestString, len);
-				String reversedValue = reverseString(inputTestString, len);
-				System.out.printf("Reversed value of %s is: %s %n", inputTestString, reversedValue);
-				System.out.printf("Length of Reversed Value: %d %n", computeStringLength(reversedValue));
-				boolean flag = isPalindrome(inputTestString, reversedValue, len);
-				System.out.printf("String %s is %s palindrome %n", inputTestString, flag ? "a" : "not a");
-				String upperResult = changeLowerToUpper(inputTestString, len);
-				System.out.printf("Input %s in uppercase is: %s %n", inputTestString, upperResult);
-				String noWhiteSpaceString = removeWhiteSpace(inputTestString, len);
-				System.out.printf("Input %s without whitespace is: %s %n", inputTestString, noWhiteSpaceString);
+				//String reversedValue = reverseString(inputTestString, len);
+				//System.out.printf("Reversed value of %s is: %s %n", inputTestString, reversedValue);
+				//System.out.printf("Length of Reversed Value: %d %n", computeStringLength(reversedValue));
+				//boolean flag = isPalindrome(inputTestString, reversedValue, len);
+				//System.out.printf("String %s is %s palindrome %n", inputTestString, flag ? "a" : "not a");
+				//String upperResult = changeLowerToUpper(inputTestString, len);
+				//System.out.printf("Input %s in uppercase is: %s %n", inputTestString, upperResult);
+				//String noWhiteSpaceString = removeWhiteSpace(inputTestString, len);
+				//System.out.printf("Input %s without whitespace is: %s %n", inputTestString, noWhiteSpaceString);
 				String capFirstLet = capitalizeFirstLet(inputTestString, len);
 				System.out.printf("Input %s capitalized first letter is: %s %n", inputTestString, capFirstLet);
-				char c = 'a';
-				int charIndex = getIndexOf(inputTestString, len, c);
-				System.out.printf("Input %s index of %c is: %d %n", inputTestString, c, charIndex);
+				int numWords = numberOfWords(inputTestString, len);
+				System.out.printf("Number of words in %s is: %d %n", inputTestString, numWords);
+				//char c = 'a';
+				//int charIndex = getIndexOf(inputTestString, len, c);
+				//System.out.printf("Input %s index of %c is: %d %n", inputTestString, c, charIndex);
+				/**
 				for(int letValue = (int)'a'; letValue <= (int)'z'; ++letValue) {
 					int charCount = countOccurrences(inputTestString, len, (char) letValue);
 					System.out.printf("%c\t%d%n", (char)letValue, charCount);
 				}
+				*/
+				/**
 				for(int letValue = (int)'A'; letValue <= (int)'Z'; ++letValue) {
 					int charCount = countOccurrences(upperResult, len, (char) letValue);
 					System.out.printf("%c\t%d%n", (char)letValue, charCount);
 				}
-				System.out.println("============================");
+				*/
+				//System.out.println("============================");
 				// find most often occurring character
 				// define variables to store the answer
+				/**
 				int answerCount = 0;
 				char answerChar = 'a'; // don't know
 				for(int letValue = (int)'a'; letValue <= (int)'z'; ++letValue) {
@@ -245,6 +280,8 @@ public class StringLength {
 					}
 					System.out.printf("%c\t%d%n", (char)letValue, charCount);
 				}
+				*/
+				/**
 				for(int letValue = (int)'A'; letValue <= (int)'Z'; ++letValue) {
 					int charCount = countOccurrences(inputTestString, len, (char) letValue);
 					if(charCount > answerCount) {
@@ -253,8 +290,9 @@ public class StringLength {
 					}
 					System.out.printf("%c\t%d%n", (char)letValue, charCount);
 				}
+				*/
 				//print result
-				System.out.printf("Input %s most ofter char is: %c %d times %n", inputTestString, answerCount == 0 ? null : answerChar, answerCount);
+				//System.out.printf("Input %s most ofter char is: %c %d times %n", inputTestString, answerCount == 0 ? null : answerChar, answerCount);
 				// read the next line
 				inputTestString = reader.readLine();
 			}
